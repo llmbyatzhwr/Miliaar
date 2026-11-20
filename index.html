@@ -1,0 +1,1627 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مليار لتوصيل الطلبات | Miliar Delivery Services - دبي</title>
+    
+    <!-- Google Fonts: Cairo & Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 Pro Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Three.js CDN للشخصية ثلاثية الأبعاد الحاملة للطرد -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#06080D',
+                        navyDark: '#0A0E17',
+                        navyCard: '#101624',
+                        goldLuxury: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        goldDark: '#997A15',
+                        cyanGlow: '#00E5FF',
+                        silverText: '#94A3B8'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        tajawal: ['Tajawal', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'gold-glow': '0 0 35px rgba(212, 175, 55, 0.32)',
+                        'gold-dramatic': '0 0 65px rgba(212, 175, 55, 0.48)',
+                        'cyan-glow': '0 0 35px rgba(0, 229, 255, 0.28)',
+                        'glass': '0 25px 60px rgba(0, 0, 0, 0.7)'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', 'Tajawal', sans-serif;
+            background-color: #06080D;
+            color: #F8FAFC;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #06080D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #D4AF37, #00E5FF);
+            border-radius: 4px;
+        }
+
+        /* Metallic Gold Gradient Text */
+        .text-gradient-gold {
+            background: linear-gradient(135deg, #FFF6C7 0%, #D4AF37 50%, #A67C00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* دمج النصوص والعناصر مباشرة مع الخلفية بدون مستطيلات أو خلفيات بطاقات */
+        .glass-panel {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .glass-panel-hover {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
+        .glass-panel-hover:hover {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            transform: translateY(-4px);
+        }
+
+        .glass-gold {
+            background: transparent !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Ambient Floating Glows */
+        .morph-blob {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(80px);
+            animation: morphShape 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes morphShape {
+            0% {
+                border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+            50% {
+                border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+                transform: translate(35px, -45px) rotate(180deg) scale(1.12);
+            }
+            100% {
+                border-radius: 55% 45% 35% 65% / 60% 40% 60% 40%;
+                transform: translate(-25px, 25px) rotate(360deg) scale(1.05);
+            }
+        }
+
+        /* Logo Glow Effect */
+        .logo-cinematic-glow {
+            box-shadow: 0 0 28px rgba(212, 175, 55, 0.52);
+            transition: all 0.5s ease;
+        }
+        .logo-cinematic-glow:hover {
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.9);
+        }
+
+        /* Floating WhatsApp Button Animation */
+        @keyframes pulseGreen {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.75); }
+            70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float {
+            animation: pulseGreen 2s infinite;
+        }
+
+        /* =========================================================
+           حركة الصور السينمائية الحية (تنزل ببطء وتتنفس وتتحرك مع النزول)
+           ========================================================= */
+        @keyframes imageFloatSlow {
+            0%, 100% { transform: translateY(0px) scale(1.03); }
+            50% { transform: translateY(-14px) scale(1.07); }
+        }
+
+        @keyframes imageKenBurns {
+            0% { transform: scale(1.02) translate(0px, 0px); }
+            50% { transform: scale(1.11) translate(-8px, -10px); }
+            100% { transform: scale(1.02) translate(0px, 0px); }
+        }
+
+        .courier-realistic-float {
+            transition: transform 0.4s ease;
+        }
+        .courier-realistic-float-delayed {
+            transition: transform 0.4s ease;
+        }
+
+        .living-photo-motion {
+            transition: transform 0.6s ease;
+        }
+
+        /* تأثير سقوط وظهور الصور ببطء ونعومة عند النزول في الصفحة */
+        .photo-drop-reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .photo-drop-reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+        }
+
+        /* دمج ناعم لحواف الصور مع الخلفية */
+        .courier-seamless-blend {
+            -webkit-mask-image: radial-gradient(ellipse 76% 80% at 50% 44%, rgba(0,0,0,1) 38%, rgba(0,0,0,0.48) 70%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(ellipse 76% 80% at 50% 44%, rgba(0,0,0,1) 38%, rgba(0,0,0,0.48) 70%, rgba(0,0,0,0) 100%);
+        }
+
+        /* =========================================================
+           أيقونات حية متغيرة (تتوهج وتدور وتنبض بأسلوب مختلف عن القوالب التقليدية)
+           ========================================================= */
+        @keyframes iconOrbitalPulse {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                box-shadow: 0 0 18px rgba(212, 175, 55, 0.25);
+            }
+            50% {
+                transform: translateY(-5px) rotate(6deg) scale(1.08);
+                box-shadow: 0 0 32px rgba(0, 229, 255, 0.45);
+            }
+        }
+
+        @keyframes iconRingSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        /* رموز مدمجة مباشرة مع الخلفية بدون مستطيلات أو إطارات */
+        .morph-icon-box {
+            position: relative;
+            width: auto !important;
+            height: auto !important;
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            border-radius: 0 !important;
+            overflow: visible !important;
+            padding: 0.25rem 0;
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+        }
+        .morph-icon-box::before,
+        .morph-icon-box::after {
+            display: none !important;
+            content: none !important;
+        }
+        .group:hover .morph-icon-box {
+            transform: translateY(-4px) scale(1.12);
+            filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.55));
+        }
+        .group:hover .morph-icon-box i {
+            transform: scale(1.08);
+            transition: transform 0.3s ease;
+        }
+/* Scroll Reveal Utility للنصوص والبطاقات */
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .reveal-delay-1 { transition-delay: 0.14s; }
+        .reveal-delay-2 { transition-delay: 0.28s; }
+        .reveal-delay-3 { transition-delay: 0.42s; }
+
+        /* 3D Character Canvas (الشخصية ثلاثية الأبعاد التي تنزل ببطء وهي تحمل الطرد) */
+        #three-courier-character-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        #three-courier-character-canvas canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    
+        /* =========================================================
+           أيقونات دائرية بتأثيرات جذابة خارجة منها (الشعار، القوائم، والواتساب)
+           ========================================================= */
+        .circular-icon-badge {
+            border-radius: 9999px !important;
+            position: relative;
+        }
+
+        /* موجات دائرية متوسعة تخرج من الأيقونات */
+        @keyframes rippleExpand {
+            0% {
+                transform: scale(0.95);
+                opacity: 0.75;
+            }
+            100% {
+                transform: scale(1.65);
+                opacity: 0;
+            }
+        }
+
+        @keyframes auraSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes floatGlowPulse {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-4px) scale(1.04);
+            }
+        }
+
+        /* تأثير الشعار الدائري: هالة ذهبية-سماوية دوارة وموجات متوسعة حوله */
+        .logo-circular-fx {
+            border-radius: 9999px !important;
+            position: relative;
+            z-index: 2;
+            animation: floatGlowPulse 4s ease-in-out infinite;
+        }
+        .logo-circular-fx::before {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 9999px;
+            background: conic-gradient(from 0deg, #D4AF37, transparent 35%, #00E5FF 65%, transparent 85%, #D4AF37);
+            animation: auraSpin 6s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .logo-circular-fx::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 9999px;
+            border: 2px solid rgba(212, 175, 55, 0.65);
+            animation: rippleExpand 2.6s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+            pointer-events: none;
+        }
+
+        /* تأثير أيقونة القوائم الدائرية: حلقات ضوئية وموجة نبضية عند الظهور والتمرير */
+        .menu-circular-fx {
+            border-radius: 9999px !important;
+            position: relative;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.25), rgba(16, 22, 36, 0.95)) !important;
+            border: 1.5px solid rgba(212, 175, 55, 0.65) !important;
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.35), inset 0 0 10px rgba(0, 229, 255, 0.2) !important;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .menu-circular-fx::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 9999px;
+            border: 1.5px solid rgba(0, 229, 255, 0.65);
+            animation: rippleExpand 2.2s ease-out infinite;
+            pointer-events: none;
+        }
+        .menu-circular-fx:hover {
+            transform: scale(1.1) rotate(90deg);
+            border-color: #00E5FF !important;
+            box-shadow: 0 0 28px rgba(0, 229, 255, 0.6), 0 0 16px rgba(212, 175, 55, 0.45) !important;
+        }
+
+        /* تأثير أيقونة الواتساب العائمة الدائرية: موجات خضراء وذهبية متتابعة تخرج منها */
+        .whatsapp-circular-fx {
+            border-radius: 9999px !important;
+            position: fixed !important;
+            background: radial-gradient(circle at 30% 25%, #4BE885, #25D366 65%, #128C7E) !important;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5), 0 0 25px rgba(212, 175, 55, 0.25) !important;
+            animation: floatGlowPulse 3s ease-in-out infinite !important;
+        }
+        .whatsapp-circular-fx::before,
+        .whatsapp-circular-fx::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 9999px;
+            border: 2px solid rgba(37, 211, 102, 0.8);
+            animation: rippleExpand 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+            pointer-events: none;
+        }
+        .whatsapp-circular-fx::after {
+            border-color: rgba(243, 229, 171, 0.7);
+            animation-delay: 1.2s;
+        }
+        .whatsapp-circular-fx:hover {
+            transform: scale(1.14) !important;
+            box-shadow: 0 14px 38px rgba(37, 211, 102, 0.75), 0 0 32px rgba(212, 175, 55, 0.45) !important;
+        }
+
+    </style>
+</head>
+<body class="antialiased selection:bg-goldLuxury selection:text-obsidian">
+    <!-- 3D BACKGROUND SHAPES CANVAS: أشكال هندسية ومكعبات وطوق ثلاثية الأبعاد تتحرك ببطء وتستجيب للتمرير -->
+    <div id="three-bg-shapes-canvas" class="fixed inset-0 w-full h-full pointer-events-none" style="z-index: 1;" aria-hidden="true"></div>
+
+
+
+    <!-- Ambient Background Glows -->
+    <div class="morph-blob top-10 right-10 w-[440px] h-[440px]"></div>
+    <div class="morph-blob bottom-10 left-10 w-[420px] h-[420px]" style="animation-delay: -6s;"></div>
+
+    <!-- TOP SCROLL PROGRESS LINE -->
+    <div class="fixed top-0 inset-x-0 h-1 z-[60] bg-white/5">
+        <div id="scroll-progress-bar" class="h-full bg-gradient-to-l from-goldLuxury via-goldLight to-cyanGlow w-0 transition-all duration-150"></div>
+    </div>
+
+    <!-- TOP NAVIGATION BAR -->
+    <header id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-4 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto glass-panel px-4 sm:px-6 py-3 flex items-center justify-between">
+            
+            <!-- Brand Identity with Circular Logo -->
+            <a href="#home" class="flex items-center gap-3.5 group">
+                <div class="relative w-[78px] h-[78px] rounded-full overflow-hidden border-2 border-goldLuxury logo-cinematic-glow logo-circular-fx bg-obsidian flex items-center justify-center shrink-0">
+                    <img src="img/logo.jpg" onerror="this.src='https://placehold.co/120x120/06080D/D4AF37?text=MILIAR'" alt="شعار شركة مليار الدائري" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-lg sm:text-xl font-black text-white leading-tight tracking-wide group-hover:text-goldLight transition-colors">مليار لتوصيل الطلبات</span>
+                    <span class="text-[11px] font-bold text-goldLight/90 tracking-widest uppercase font-tajawal">Miliar Delivery Services • Dubai</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-6 text-sm font-bold text-slate-300">
+                <a href="#home" class="hover:text-goldLight transition-colors">الرئيسية</a>
+                <a href="#operations" class="hover:text-goldLight transition-colors">دورنا الميداني</a>
+                <a href="#partners" class="hover:text-goldLight transition-colors">شركاء النجاح</a>
+                <a href="#why-miliar" class="hover:text-goldLight transition-colors">لماذا مليار</a>
+                <a href="#services" class="hover:text-goldLight transition-colors">خدماتنا</a>
+                <a href="#vision" class="hover:text-goldLight transition-colors">الرؤية والقيم</a>
+                <a href="#contact" class="hover:text-goldLight transition-colors">تواصل معنا</a>
+            </nav>
+
+            <!-- Direct Contact Button & Mobile Toggle -->
+            <div class="flex items-center gap-3">
+                <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 text-obsidian font-extrabold text-xs hover:brightness-110 transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-solid fa-phone-volume text-sm"></i>
+                    <span>تواصل معنا الآن</span>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button id="mobile-menu-btn" aria-label="القائمة الرئيسية" class="lg:hidden w-11 h-11 rounded-full menu-circular-fx text-goldLight flex items-center justify-center text-lg focus:outline-none">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Responsive Mobile Drawer -->
+        <div id="mobile-menu" class="hidden lg:hidden mt-3 max-w-7xl mx-auto glass-panel p-5 border space-y-3 font-bold text-sm text-slate-200">
+            <a href="#home" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">الرئيسية</a>
+            <a href="#operations" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">دورنا الميداني والأسطول</a>
+            <a href="#partners" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">شركاء النجاح</a>
+            <a href="#why-miliar" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">لماذا مليار</a>
+            <a href="#services" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">خدماتنا الأساسية</a>
+            <a href="#vision" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">الرؤية والقيم</a>
+            <a href="#contact" class="mobile-link block py-2 px-3 hover: hover:text-goldLight">تواصل معنا والموقع</a>
+            <a href="https://wa.me/971544476225" target="_blank" rel="noopener noreferrer" class="block w-full py-3 text-center bg-[#25D366] text-obsidian font-black mt-2">
+                <i class="fa-brands fa-whatsapp text-lg ml-2"></i> تواصل عبر الواتساب مباشرة
+            </a>
+        </div>
+    </header>
+
+    <!-- =========================================================================
+         HERO SECTION WITH SEAMLESS COURIERS & WIDE LOGO
+         ========================================================================= -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-20 px-4 sm:px-8 overflow-hidden z-10">
+        
+        <!-- Subtle 3D Depth Vignette Layer -->
+        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+            <div class="absolute inset-0 bg-gradient-to-b from-obsidian/55 via-transparent to-obsidian/75"></div>
+        </div>
+
+                <!-- عامل التوصيل الأول (الجانب الأيمن) - ينزل ببطء ويتحرك بحيوية -->
+        <div data-parallax-speed="0.14" class="parallax-photo hidden xl:block absolute top-28 right-4 2xl:right-8 z-10 w-[290px] 2xl:w-[330px] pointer-events-none select-none courier-realistic-float photo-drop-reveal">
+            <div class="relative overflow-hidden glass-panel border p-2.5">
+                <div class="relative h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?auto=format&fit=crop&w=800&q=90" 
+                        onerror="this.src='https://placehold.co/600x800/06080D/D4AF37?text=Miliar+Rider+1'"
+                        alt="كابتن توصيل شركة مليار بزي التوصيل الرسمي" 
+                        class="w-full h-full object-cover object-top living-photo-motion filter contrast-115"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent"></div>
+                    <span class="absolute bottom-3 right-3 px-3 py-1 bg-goldLuxury text-obsidian text-[11px] font-black shadow">
+                        <i class="fa-solid fa-motorcycle ml-1"></i> كابتن مليار الميداني
+                    </span>
+                </div>
+                <div class="pt-3 px-1.5 pb-1 text-right">
+                    <div class="text-xs font-black text-goldLight">استجابة سريعة في دبي</div>
+                    <div class="text-[11px] text-slate-300 font-tajawal mt-0.5">توصيل فوري وآمن على مدار الساعة</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- عامل التوصيل الثاني (الجانب الأيسر) - ينزل ببطء ويتحرك بحيوية -->
+        <div data-parallax-speed="-0.12" class="parallax-photo hidden xl:block absolute top-28 left-4 2xl:left-8 z-10 w-[290px] 2xl:w-[330px] pointer-events-none select-none courier-realistic-float-delayed photo-drop-reveal">
+            <div class="relative overflow-hidden glass-panel border p-2.5">
+                <div class="relative h-64 overflow-hidden">
+                    <img 
+                        src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=800&q=90" 
+                        onerror="this.src='https://placehold.co/600x800/06080D/00E5FF?text=Miliar+Rider+2'"
+                        alt="مندوب توصيل مليار السريع في دبي" 
+                        class="w-full h-full object-cover object-top living-photo-motion filter contrast-115" style="animation-delay: -5s;"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-transparent to-transparent"></div>
+                    <span class="absolute bottom-3 right-3 px-3 py-1 bg-cyanGlow text-obsidian text-[11px] font-black shadow">
+                        <i class="fa-solid fa-box-open ml-1"></i> شحنات موثوقة
+                    </span>
+                </div>
+                <div class="pt-3 px-1.5 pb-1 text-right">
+                    <div class="text-xs font-black text-cyanGlow">التزام تام بالمواعيد</div>
+                    <div class="text-[11px] text-slate-300 font-tajawal mt-0.5">تغطية شاملة لكافة أحياء دبي</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- محتوى الواجهة الرئيسية -->
+        <div class="w-full max-w-5xl mx-auto text-center flex flex-col items-center relative z-20">
+            
+            <!-- عرض عاملي التوصيل على الشاشات المتوسطة والصغيرة -->
+            <div class="xl:hidden grid grid-cols-2 gap-3 w-full max-w-md mb-6 select-none photo-drop-reveal">
+                <div class=" overflow-hidden glass-panel border p-2 courier-realistic-float">
+                    <div class="h-36 sm:h-44 overflow-hidden relative">
+                        <img 
+                            src="https://images.unsplash.com/photo-1617347454431-f49d7ff5c3b1?auto=format&fit=crop&w=600&q=85" 
+                            onerror="this.src='https://placehold.co/400x500/06080D/D4AF37?text=Miliar+1'"
+                            alt="كابتن توصيل مليار" 
+                            class="w-full h-full object-cover object-top living-photo-motion"
+                        >
+                    </div>
+                    <div class="pt-2 text-center text-[11px] font-black text-goldLight">كابتن مليار الميداني</div>
+                </div>
+                <div class=" overflow-hidden glass-panel border p-2 courier-realistic-float-delayed">
+                    <div class="h-36 sm:h-44 overflow-hidden relative">
+                        <img 
+                            src="https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=600&q=85" 
+                            onerror="this.src='https://placehold.co/400x500/06080D/00E5FF?text=Miliar+2'"
+                            alt="مندوب توصيل مليار" 
+                            class="w-full h-full object-cover object-top living-photo-motion" style="animation-delay: -5s;"
+                        >
+                    </div>
+                    <div class="pt-2 text-center text-[11px] font-black text-cyanGlow">التزام بالمواعيد</div>
+                </div>
+            </div>
+
+            <!-- DRAMATIC WIDE LOGO INTEGRATION (مدمج بالكامل بدون إطار أو خلفية) -->
+            <div class="relative mb-5 w-full max-w-2xl mx-auto group photo-drop-reveal flex items-center justify-center">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.24)_0%,transparent_70%)] blur-2xl pointer-events-none"></div>
+                <div class="relative w-full flex items-center justify-center">
+                    <img src="img/logo1.jpg"
+                         onerror="this.style.display='none'; document.getElementById('miliar-fallback-hero-logo').style.display='flex';"
+                         alt="شعار شركة مليار العريض لخدمات التوصيل"
+                         style="-webkit-mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 58%, rgba(0,0,0,0.35) 82%, transparent 100%); mask-image: radial-gradient(ellipse 72% 72% at 50% 50%, #000 58%, rgba(0,0,0,0.35) 82%, transparent 100%);"
+                         class="w-full h-auto max-h-52 sm:max-h-64 object-contain mix-blend-lighten contrast-150 brightness-110 drop-shadow-[0_4px_25px_rgba(212,175,55,0.4)] transform group-hover:scale-[1.03] transition-transform duration-700">
+                    
+                    <!-- شعار نصي فاخر احتياطي في حال عدم توفر logo1.jpg -->
+                    <div id="miliar-fallback-hero-logo" style="display:none;" class="flex-col items-center justify-center py-4">
+                        <span class="text-5xl sm:text-7xl font-black tracking-wider text-gradient-gold drop-shadow-[0_0_30px_rgba(212,175,55,0.45)]">MILIAR</span>
+                        <span class="text-lg sm:text-2xl font-extrabold text-white tracking-widest mt-1">مليار لخدمات التوصيل</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-3 px-5 py-2.5 glass-panel border mb-6 reveal">
+                <span class="w-2.5 h-2.5 bg-cyanGlow animate-ping"></span>
+                <span class="text-xs sm:text-sm font-extrabold text-goldLight tracking-wide">القوة اللوجستية في إمارة دبي • خدمات التوصيل الفاخرة 24/7</span>
+            </div>
+
+            <!-- Main Dramatic Title -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight mb-6 reveal reveal-delay-1 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
+                سرعة بمقياس <span class="text-gradient-gold">مليار</span> • أمان واحترافية تليق بطموحكم
+            </h1>
+
+            <!-- Subtitle Description -->
+            <p class="max-w-2xl text-slate-200 text-sm sm:text-lg leading-relaxed font-tajawal mb-10 reveal reveal-delay-2 px-5 py-3 border">
+                نقدم في <strong class="text-goldLight">شركة مليار (Miliar)</strong> حلول توصيل متكاملة وفائقة السرعة للمتاجر، المنصات العالمية، والشركات في دبي عبر أسطول حديث مجهز بأحدث تقنيات التتبع الذكي والالتزام الدقيق بالمواعيد.
+            </p>
+
+            <!-- Call-to-Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-14 reveal reveal-delay-3">
+                <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-goldLuxury via-goldLight to-goldDark text-obsidian font-black text-base hover:brightness-110 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-headset text-lg"></i>
+                    <span>تواصل مع مليار الآن</span>
+                </a>
+                <a href="#operations" class="w-full sm:w-auto px-8 py-4 glass-panel border text-white font-extrabold text-base hover: hover:border-goldLuxury transition-all flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-boxes-packing text-goldLight text-lg"></i>
+                    <span>استكشف خدماتنا وأسطولنا</span>
+                </a>
+            </div>
+
+            <!-- Quick Stats Bar -->
+            <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-4 glass-panel p-6 border reveal">
+                <div class="text-center p-3">
+                    <div class="text-2xl sm:text-3xl font-black text-goldLight">100%</div>
+                    <div class="text-xs text-slate-300 font-bold font-tajawal mt-1">تغطية شاملة لإمارة دبي</div>
+                </div>
+                <div class="text-center p-3 border-r">
+                    <div class="text-2xl sm:text-3xl font-black text-cyanGlow">24 / 7</div>
+                    <div class="text-xs text-slate-300 font-bold font-tajawal mt-1">تشغيل ودعم مستمر</div>
+                </div>
+                <div class="text-center p-3 border-r">
+                    <div class="text-2xl sm:text-3xl font-black text-goldLight">حديث</div>
+                    <div class="text-xs text-slate-300 font-bold font-tajawal mt-1">أسطول دراجات وسيارات</div>
+                </div>
+                <div class="text-center p-3 border-r">
+                    <div class="text-2xl sm:text-3xl font-black text-cyanGlow">دقيقة</div>
+                    <div class="text-xs text-slate-300 font-bold font-tajawal mt-1">دقة وموثوقية في المواعيد</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         OPERATIONAL ROLE SHOWCASE (صور حية تنزل وتتحرك ببطء وتبرز دور الشركة)
+         ========================================================================= -->
+    <section id="operations" class="relative py-24 px-4 sm:px-8 z-10">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="glass-panel p-6 sm:p-12 border relative overflow-hidden">
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal">
+                    <div>
+                        <span class="text-xs font-extrabold tracking-widest uppercase text-cyanGlow px-4 py-1.5 border">
+                            الدور التشغيلي لشركة مليار
+                        </span>
+                        <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                            كيف تصنع <span class="text-gradient-gold">مليار</span> الفارق على أرض الواقع؟
+                        </h2>
+                    </div>
+                    <p class="max-w-md text-slate-300 text-sm font-tajawal leading-relaxed">
+                        من لحظة استلام الطلب من المتجر أو المطعم وحتى تسليمه بابتسامة واحترافية إلى باب العميل، ندير كل ثانية بدقة متناهية.
+                    </p>
+                </div>
+
+                <!-- 3 Living Motion Visual Role Cards (صور تنزل ببطء وتتحرك باستمرار) -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Visual Role 1 -->
+                    <div data-parallax-speed="0.06" class="parallax-photo relative overflow-hidden border group photo-drop-reveal">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=900&q=85" 
+                                 alt="أسطول دراجات مليار السريعة في دبي" 
+                                 class="w-full h-full object-cover opacity-85 mix-blend-lighten living-photo-motion filter contrast-125">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3.5 py-1.5 border text-goldLight text-xs font-black flex items-center gap-2">
+                                <i class="fa-solid fa-bolt text-goldLight animate-pulse"></i>
+                                الاستجابة الفورية
+                            </span>
+                        </div>
+                        <div class="p-6 relative -mt-8">
+                            <h3 class="text-xl font-black text-white mb-2">انتشار ميداني واسع في دبي</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm font-tajawal leading-relaxed">
+                                توزيع استراتيجي لكباتن مليار في جميع المناطق الحيوية والتجارية لضمان الوصول إلى نقطة الاستلام خلال دقائق معدودة.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Role 2 -->
+                    <div data-parallax-speed="-0.05" class="parallax-photo relative overflow-hidden border group photo-drop-reveal" style="transition-delay: 0.22s;">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=85" 
+                                 alt="إدارة الشحنات والطرود الذكية في شركة مليار" 
+                                 class="w-full h-full object-cover opacity-85 mix-blend-lighten living-photo-motion filter contrast-125" style="animation-delay: -4s;">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3.5 py-1.5 border text-cyanGlow text-xs font-black flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved text-cyanGlow animate-pulse"></i>
+                                الأمان والجودة
+                            </span>
+                        </div>
+                        <div class="p-6 relative -mt-8">
+                            <h3 class="text-xl font-black text-white mb-2">حفظ حراري وتغليف آمن</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm font-tajawal leading-relaxed">
+                                تجهيز كامل بصناديق عازلة للحرارة ومؤمنة ضد الصدمات للحفاظ على نضارة الوجبات وسلامة الطرود الإلكترونية والتجارية.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual Role 3 -->
+                    <div data-parallax-speed="0.06" class="parallax-photo relative overflow-hidden border group photo-drop-reveal" style="transition-delay: 0.44s;">
+                        <div class="relative h-64 overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=900&q=85" 
+                                 alt="تسليم الطلبات باحترافية للعملاء" 
+                                 class="w-full h-full object-cover opacity-85 mix-blend-lighten living-photo-motion filter contrast-125" style="animation-delay: -8s;">
+                            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-transparent"></div>
+                            <span class="absolute top-4 right-4 px-3.5 py-1.5 border text-goldLight text-xs font-black flex items-center gap-2">
+                                <i class="fa-solid fa-star text-goldLight animate-pulse"></i>
+                                تجربة عميل استثنائية
+                            </span>
+                        </div>
+                        <div class="p-6 relative -mt-8">
+                            <h3 class="text-xl font-black text-white mb-2">تسليم احترافي يعكس علامتكم</h3>
+                            <p class="text-slate-300 text-xs sm:text-sm font-tajawal leading-relaxed">
+                                كباتن مليار هم سفراء علامتكم التجارية أمام عملائكم؛ مظهر لائق، التزام تام بالوقت، وتأكيد تسليم فوري.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         SUCCESS PARTNERS SECTION
+         ========================================================================= -->
+    <section id="partners" class="relative py-24 px-4 sm:px-8 border-y z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <span class="text-xs font-extrabold tracking-widest uppercase text-goldLight px-4 py-1.5 border">
+                    المنصات والشركات العالمية
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                    شركاء <span class="text-gradient-gold">النجاح والتميز</span> في الإمارات
+                </h2>
+                <p class="text-slate-300 text-sm font-tajawal mt-3">
+                    نفخر بدعم عمليات التوصيل لأكبر منصات الطلبات والتجارة الإلكترونية في دولة الإمارات.
+                </p>
+            </div>
+
+            <!-- Grid of Partner Cards with Morphing Icons -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
+                
+                <!-- Partner 1: Talabat -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal">
+                    <div class="morph-icon-box border flex items-center justify-center text-orange-300 text-xl mb-4">
+                        <i class="fa-solid fa-bell-concierge"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">طلبات</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Talabat</span>
+                </div>
+
+                <!-- Partner 2: Noon -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal reveal-delay-1">
+                    <div class="morph-icon-box border flex items-center justify-center text-yellow-300 text-xl mb-4">
+                        <i class="fa-solid fa-store"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">نون</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Noon Food & Daily</span>
+                </div>
+
+                <!-- Partner 3: Deliveroo -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal reveal-delay-2">
+                    <div class="morph-icon-box border flex items-center justify-center text-teal-300 text-xl mb-4">
+                        <i class="fa-solid fa-route"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">ديليفرو</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Deliveroo</span>
+                </div>
+
+                <!-- Partner 4: Carrefour -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal reveal-delay-3">
+                    <div class="morph-icon-box border flex items-center justify-center text-blue-300 text-xl mb-4">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">كارفور</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Carrefour UAE</span>
+                </div>
+
+                <!-- Partner 5: Amazon -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal">
+                    <div class="morph-icon-box border flex items-center justify-center text-amber-300 text-xl mb-4">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">أمازون</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Amazon UAE</span>
+                </div>
+
+                <!-- Partner 6: Keeta -->
+                <div class="glass-panel glass-panel-hover p-6 border flex flex-col items-center justify-center text-center group reveal reveal-delay-1">
+                    <div class="morph-icon-box border flex items-center justify-center text-cyan-300 text-xl mb-4">
+                        <i class="fa-solid fa-gauge-high"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">كيتا</span>
+                    <span class="text-[11px] text-slate-400 font-tajawal">Keeta Delivery</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         WHY MILIAR (ADVANTAGES) SECTION
+         ========================================================================= -->
+    <section id="why-miliar" class="relative py-24 px-4 sm:px-8 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-extrabold tracking-widest uppercase text-goldLight px-4 py-1.5 border">
+                    لماذا نتميز في دبي
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                    مميزات تنافسية تضمن <span class="text-gradient-gold">نجاح أعمالكم</span>
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base mt-3 font-tajawal">
+                    نجمع في مليار بين السرعة الفائقة، الأمان التام للشحنات، والكفاءة التشغيلية العالية في جميع مناطق دبي.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Advantage 1 -->
+                <div class="glass-panel glass-panel-hover p-8 border group reveal">
+                    <div class="morph-icon-box border flex items-center justify-center text-goldLight text-2xl mb-6">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">أسطول دراجات وسيارات حديث</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-tajawal">
+                        أسطول متكامل ومتنوع من الدراجات النارية والسيارات الحديثة المجهزة بصناديق حرارية للحفاظ على جودة الطلبات.
+                    </p>
+                </div>
+
+                <!-- Advantage 2 -->
+                <div class="glass-panel glass-panel-hover p-8 border group reveal reveal-delay-1">
+                    <div class="morph-icon-box border flex items-center justify-center text-cyanGlow text-2xl mb-6">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">سرعة فائقة والتزام محدد</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-tajawal">
+                        أنظمة توجيه ذكية لاختيار أسرع المسارات وتفادي الزحام لضمان وصول الطلب في الوقت المحدد تماماً.
+                    </p>
+                </div>
+
+                <!-- Advantage 3 -->
+                <div class="glass-panel glass-panel-hover p-8 border group reveal reveal-delay-2">
+                    <div class="morph-icon-box border flex items-center justify-center text-goldLight text-2xl mb-6">
+                        <i class="fa-solid fa-id-card-clip"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">سائقون محترفون ومدربون</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-tajawal">
+                        فريق عمل مرخص بالكامل ومدرّب على أعلى معايير السلامة، اللياقة المهنية، والتعامل الراقي مع العملاء.
+                    </p>
+                </div>
+
+                <!-- Advantage 4 -->
+                <div class="glass-panel glass-panel-hover p-8 border group reveal reveal-delay-3">
+                    <div class="morph-icon-box border flex items-center justify-center text-cyanGlow text-2xl mb-6">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">مطابقة معايير دبي 100%</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm leading-relaxed font-tajawal">
+                        التزام كامل بالتشريعات واللوائح الصادرة عن هيئة الطرق والمواصلات (RTA) والجهات المعنية في إمارة دبي.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         CORE SERVICES SECTION
+         ========================================================================= -->
+    <section id="services" class="relative py-24 px-4 sm:px-8 border-y z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-extrabold tracking-widest uppercase text-cyanGlow px-4 py-1.5 border">
+                    حلول لوجستية شاملة
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                    خدماتنا <span class="text-gradient-gold">الأساسية</span>
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base mt-3 font-tajawal">
+                    نلبي احتياجات المطاعم، المتاجر الإلكترونية، والشركات بخدمات توصيل مرنة ومخصصة تناسب نموكم.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="glass-panel glass-panel-hover p-8 border group flex flex-col justify-between reveal">
+                    <div>
+                        <div class="morph-icon-box text-obsidian font-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-mitten text-goldLight"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4">توصيل المطاعم والمتاجر</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed font-tajawal mb-6">
+                            خدمة توصيل فورية وسريعة لشحنات الأغذية والوجبات والمستلزمات اليومية مع الحفاظ الحراري التام والسرعة القصوى في التسليم.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-300 border-t pt-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> حقائب حفظ حراري متطورة</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> تغطية ليلية ونهارية 24 ساعة</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> تتبع فوري لمسار السائق</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="glass-panel glass-panel-hover p-8 border group flex flex-col justify-between reveal reveal-delay-1">
+                    <div>
+                        <div class="morph-icon-box text-obsidian font-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-file-contract text-cyanGlow"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4">العقود التشغيلية للشركات</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed font-tajawal mb-6">
+                            توفير أساطيل مخصصة بدراجات وسائقين مرخصين ومجهزين بعقود تشغيلية شهرية وسنوية مرنة تلائم حجم أعمالكم.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-300 border-t pt-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanGlow"></i> إشراف تشغيلي وإدارة كاملة</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanGlow"></i> استبدال فوري للمركبات والسائقين</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-cyanGlow"></i> أسعار خاصة للتطبيقات والمتاجر الكبيرة</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel glass-panel-hover p-8 border group flex flex-col justify-between reveal reveal-delay-2">
+                    <div>
+                        <div class="morph-icon-box text-obsidian font-black flex items-center justify-center text-2xl mb-6">
+                            <i class="fa-solid fa-dolly text-goldLight"></i>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4">شحنات التجارة الإلكترونية</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed font-tajawal mb-6">
+                            توصيل الطرود والمنتجات في نفس اليوم (Same-Day Delivery) في جميع أنحاء دبي والإمارات المجاورة بكفاءة وأمان تام.
+                        </p>
+                    </div>
+                    <ul class="space-y-3 text-xs sm:text-sm text-slate-300 border-t pt-6">
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> تسليم سريع في نفس اليوم</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> توقيع واستلام موثق إلكترونياً</li>
+                        <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-goldLight"></i> إرجاع وإدارة الشحنات بسهولة</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         VISION, MISSION & VALUES SECTION
+         ========================================================================= -->
+    <section id="vision" class="relative py-24 px-4 sm:px-8 overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-extrabold tracking-widest uppercase text-goldLight px-4 py-1.5 border">
+                    هويتنا والتزامنا
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                    الرؤية، والأهداف، <span class="text-gradient-gold">والقيم المهنية</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Our Vision -->
+                <div class="glass-panel glass-panel-hover p-8 border relative overflow-hidden group reveal">
+                    <div class="morph-icon-box border text-goldLight flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-compass"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-3">رؤيتنا المستقبليـة</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed font-tajawal">
+                        أن تكون <strong class="text-goldLight">مليار</strong> الخيار الأول والنموذج الأكثر موثوقية وفخامة في قطاع توصيل الطلبات والخدمات اللوجستية السريعة على مستوى إمارة دبي ودولة الإمارات العربية المتحدة.
+                    </p>
+                </div>
+
+                <!-- Our Mission -->
+                <div class="glass-panel glass-panel-hover p-8 border relative overflow-hidden group reveal reveal-delay-1">
+                    <div class="morph-icon-box border text-cyanGlow flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-flag-checkered"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-3">أهدافنا الاستراتيجية</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed font-tajawal">
+                        توفير حلول لوجستية ذات اعتمادية عالية، تمكين عملائنا من النمو والانتشار، ورفع الكفاءة التشغيلية لأسطولنا باستخدام أفضل التقنيات الحديثة.
+                    </p>
+                </div>
+
+                <!-- Our Core Values -->
+                <div class="glass-panel glass-panel-hover p-8 border relative overflow-hidden group reveal reveal-delay-2">
+                    <div class="morph-icon-box border text-goldLight flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-white mb-3">قيمنا المهنيــة</h3>
+                    <p class="text-slate-300 text-sm leading-relaxed font-tajawal">
+                        الأمانة في التعامل، الالتزام المطلق بالمواعيد، الشفافية والاحترافية الكاملة، والاهتمام البالغ بتفاصيل تجربة العملاء وشركاء النجاح.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================================================
+         CONTACT & LOCATION SECTION
+         ========================================================================= -->
+    <section id="contact" class="relative py-24 px-4 sm:px-8 border-t overflow-hidden z-10">
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-cyanGlow px-4 py-1.5 border">
+                    تواصل معنا وموقعنا في دبي
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white mt-4">
+                    قنوات التواصل <span class="text-gradient-gold">المباشر والرسمي</span>
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base mt-3 font-tajawal">
+                    يسعدنا تواصلكم المباشر عبر اختصارات البريد الإلكتروني الرسمية، الواتساب، الهاتف، أو زيارة مقرنا في دبي.
+                </p>
+            </div>
+
+            <!-- Contact Information Cards Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-16">
+                
+                <!-- Direct Email Action Cards (7 Columns) -->
+                <div class="lg:col-span-7 space-y-5 reveal">
+                    
+                    <!-- Direct Action Card: @info Email -->
+                    <a href="mailto:info.miliar@miliar.lumina-vault2.com?subject=استفسار%20-%20شركة%20مليار%20لتوصيل%20الطلبات" 
+                       class="glass-panel p-6 sm:p-7 border hover:border-goldLuxury hover: transition-all flex items-center justify-between gap-5 group">
+                        <div class="flex items-center gap-4">
+                            <div dir="ltr" class="morph-icon-box shrink-0 text-obsidian font-black flex items-center justify-center text-base">
+                                @info
+                            </div>
+                            <div>
+                                <span class="text-xs font-extrabold text-goldLight uppercase tracking-wider font-tajawal">مراسلة الإدارة والاستفسارات العامة</span>
+                                <h3 class="text-lg sm:text-xl font-black text-white mt-1 flex items-center gap-2">
+                                    <span>البريد الرسمي للإدارة</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-goldLight group-hover:translate-x-[-3px] group-hover:translate-y-[-3px] transition-transform"></i>
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1 font-tajawal">انقر هنا لفتح البريد ومراسلة إدارة مليار مباشرة</p>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex items-center justify-center w-12 h-12 text-goldLight border group-hover:bg-goldLuxury group-hover:text-obsidian transition-colors">
+                            <i class="fa-solid fa-paper-plane text-lg"></i>
+                        </div>
+                    </a>
+
+                    <!-- Direct Action Card: @hr Email -->
+                    <a href="mailto:hr.miliar@miliar.lumina-vault2.com?subject=طلب%20توظيف%20-%20شركة%20مليار%20لتوصيل%20الطلبات" 
+                       class="glass-panel p-6 sm:p-7 border hover:border-cyanGlow hover: transition-all flex items-center justify-between gap-5 group">
+                        <div class="flex items-center gap-4">
+                            <div dir="ltr" class="morph-icon-box shrink-0 text-obsidian font-black flex items-center justify-center text-base">
+                                @hr
+                            </div>
+                            <div>
+                                <span class="text-xs font-extrabold text-cyanGlow uppercase tracking-wider font-tajawal">قسم التوظيف والموارد البشرية</span>
+                                <h3 class="text-lg sm:text-xl font-black text-white mt-1 flex items-center gap-2">
+                                    <span>البريد الرسمي للتوظيف</span>
+                                    <i class="fa-solid fa-arrow-up-right-from-square text-xs text-cyanGlow group-hover:translate-x-[-3px] group-hover:translate-y-[-3px] transition-transform"></i>
+                                </h3>
+                                <p class="text-xs text-slate-300 mt-1 font-tajawal">انقر هنا لإرسال طلب التوظيف والسيرة الذاتية فوراً</p>
+                            </div>
+                        </div>
+                        <div class="hidden sm:flex items-center justify-center w-12 h-12 text-cyanGlow border group-hover:bg-cyanGlow group-hover:text-obsidian transition-colors">
+                            <i class="fa-solid fa-briefcase text-lg"></i>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Direct Phone & WhatsApp Actions Card (5 Columns) -->
+                <div class="lg:col-span-5 reveal reveal-delay-2">
+                    <div class="h-full glass-gold p-8 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-extrabold text-goldLight tracking-widest uppercase">خدمة عملاء 24/7</span>
+                            <h3 class="text-2xl font-black text-white mt-2 mb-3">اتصال ومحادثة فورية</h3>
+                            <p class="text-slate-300 text-sm font-tajawal leading-relaxed mb-8">
+                                فريق الدعم الفني والعمليات بشركة <strong class="text-goldLight">مليار (Miliar)</strong> جاهز للرد الفوري على اتصالاتكم واستفساراتكم على مدار الساعة.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- WhatsApp Action -->
+                            <a href="https://wa.me/971544476225" target="_blank" rel="noopener noreferrer" class="w-full py-4 px-5 hover:bg-[#25D366] text-[#25D366] hover:text-obsidian border font-black text-sm transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-3">
+                                    <i class="fa-brands fa-whatsapp text-2xl group-hover:scale-110 transition-transform"></i>
+                                    <span>محادثة واتساب فورية</span>
+                                </span>
+                                <span dir="ltr" class="font-bold">+971 54 447 6225</span>
+                            </a>
+
+                            <!-- Direct Phone Call Action -->
+                            <a href="tel:+971544476225" class="w-full py-4 px-5 hover:bg-cyanGlow text-cyanGlow hover:text-obsidian border font-extrabold text-sm transition-all flex items-center justify-between group">
+                                <span class="flex items-center gap-3">
+                                    <i class="fa-solid fa-phone-volume text-xl group-hover:scale-110 transition-transform"></i>
+                                    <span>اتصال هاتفي مباشر</span>
+                                </span>
+                                <span dir="ltr" class="font-bold">+971 54 447 6225</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- REAL GOOGLE MAPS EMBEDDED LOCATION IN DEIRA DUBAI -->
+            <div id="location" class="glass-panel p-4 sm:p-6 border photo-drop-reveal">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5 px-2">
+                    <div class="flex items-center gap-3">
+                        <div class="morph-icon-box border flex items-center justify-center text-goldLight text-lg">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-black text-white">مقر شركة مليار في إمارة دبي</h3>
+                            <p class="text-xs text-slate-300 font-tajawal mt-0.5">شارع بورسعيد، أمام ديرة سنتر، ديرة، دبي، الإمارات العربية المتحدة</p>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=Port+Said+Street+Deira+Dubai" target="_blank" rel="noopener noreferrer" class="px-4 py-2 hover:bg-goldLuxury text-goldLight hover:text-obsidian border font-bold text-xs transition-colors flex items-center gap-2">
+                        <i class="fa-solid fa-diamond-turn-right"></i>
+                        <span>فتح في خرائط Google</span>
+                    </a>
+                </div>
+
+                <!-- Google Maps iFrame -->
+                <div class="w-full h-80 sm:h-[400px] overflow-hidden border shadow-inner">
+                    <iframe 
+                        title="موقع شركة مليار لتوصيل الطلبات دبي"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.283896500858!2d55.3268882!3d25.2619444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cd5e14b51a5%3A0xb71a8a29a4303d8b!2sDeira%20City%20Centre%20Area%2C%20Port%20Said%2C%20Dubai!5e0!3m2!1sen!2sae!4v1700000000000!5m2!1sen!2sae" 
+                        class="w-full h-full border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 bg-obsidian border-t pt-16 pb-12 px-4 sm:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b">
+                
+                <!-- Brand with Circular Logo -->
+                <div class="flex items-center gap-4">
+                    <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-goldLuxury logo-cinematic-glow logo-circular-fx bg-obsidian flex items-center justify-center shrink-0">
+                        <img src="img/logo.jpg" onerror="this.src='https://placehold.co/120x120/06080D/D4AF37?text=MILIAR'" alt="شعار مليار الدائري" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <div class="text-xl font-black text-white">مليار لتوصيل الطلبات</div>
+                        <div class="text-xs font-bold text-goldLight tracking-wider font-tajawal">Miliar Delivery Services • Dubai, UAE</div>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-bold text-slate-400">
+                    <a href="#home" class="hover:text-goldLight transition-colors">الرئيسية</a>
+                    <a href="#operations" class="hover:text-goldLight transition-colors">دورنا الميداني</a>
+                    <a href="#partners" class="hover:text-goldLight transition-colors">شركاء النجاح</a>
+                    <a href="#why-miliar" class="hover:text-goldLight transition-colors">لماذا مليار</a>
+                    <a href="#services" class="hover:text-goldLight transition-colors">الخدمات</a>
+                    <a href="#vision" class="hover:text-goldLight transition-colors">الرؤية والقيم</a>
+                    <a href="#contact" class="hover:text-goldLight transition-colors">تواصل معنا</a>
+                </div>
+            </div>
+
+            <!-- Bottom Copyright Details -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-400">
+                <p class="font-bold text-slate-300 font-tajawal">
+                    © 2026 مليار لتوصيل الطلبات (Miliar Delivery Services) • جميع الحقوق محفوظة
+                </p>
+                <p class="text-slate-400 font-tajawal">
+                    شارع بورسعيد، أمام ديرة سنتر، ديرة، دبي | واتساب وهاتف: <span dir="ltr" class="font-bold text-goldLight">+971 54 447 6225</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FLOATING WHATSAPP BUTTON WITH TOOLTIP -->
+    <a href="https://wa.me/971544476225" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       aria-label="تواصل معنا عبر واتساب"
+       class="whatsapp-float whatsapp-circular-fx fixed bottom-6 left-6 z-50 w-14 h-14 sm:w-16 sm:h-16 rounded-full text-white flex items-center justify-center transition-transform group">
+        <i class="fa-brands fa-whatsapp text-3xl sm:text-4xl"></i>
+        <!-- Hover Tooltip -->
+        <span class="hidden sm:block absolute left-20 whitespace-nowrap bg-navyCard text-white text-xs font-bold px-3.5 py-2 border opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg font-tajawal">
+            تواصل مع مليار عبر الواتساب 24/7
+        </span>
+    </a>
+
+    <!-- =========================================================================
+         3D COURIER CHARACTER CARRYING A PARCEL & SMOOTH PHOTO DROP MOTION ENGINE
+         ========================================================================= -->
+    <script>
+        /**
+         * بناء شخصية كابتن توصيل ثلاثية الأبعاد (3D Courier Character Carrying a Luxury Parcel)
+         * تهبط ببطء ونعومة مع نزول المستخدم في الصفحة وتحمل طرد شركة مليار الذهبي
+         */
+        function init3DCourierCharacter() {
+            const container = document.getElementById('three-courier-character-canvas');
+            if (!container || typeof THREE === 'undefined') return;
+
+            try {
+                const scene = new THREE.Scene();
+
+                const camera = new THREE.PerspectiveCamera(42, window.innerWidth / window.innerHeight, 0.1, 120);
+                camera.position.set(0, 0.5, 16);
+
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+
+                // إضاءة سينمائية دافئة وباردة لإبراز الشخصية والطرد
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.65);
+                scene.add(ambientLight);
+
+                const goldSpot = new THREE.PointLight(0xF3E5AB, 2.2, 50);
+                goldSpot.position.set(6, 8, 12);
+                scene.add(goldSpot);
+
+                const cyanRim = new THREE.PointLight(0x00E5FF, 1.8, 50);
+                cyanRim.position.set(-8, 4, 10);
+                scene.add(cyanRim);
+
+                // مجموعة الشخصية ثلاثية الأبعاد بالكامل
+                const courierGroup = new THREE.Group();
+                scene.add(courierGroup);
+
+                // الخامات (أسود كربوني فاخر، ذهبي لامع، أزرق سماوي نيون، وخامة الطرد)
+                const suitMat = new THREE.MeshStandardMaterial({
+                    color: 0x111827,
+                    metalness: 0.45,
+                    roughness: 0.35
+                });
+
+                const goldAccentMat = new THREE.MeshStandardMaterial({
+                    color: 0xD4AF37,
+                    emissive: 0x5A4308,
+                    emissiveIntensity: 0.35,
+                    metalness: 0.85,
+                    roughness: 0.2
+                });
+
+                const visorMat = new THREE.MeshStandardMaterial({
+                    color: 0x00E5FF,
+                    emissive: 0x0088AA,
+                    emissiveIntensity: 0.6,
+                    metalness: 0.9,
+                    roughness: 0.1
+                });
+
+                const parcelBoxMat = new THREE.MeshStandardMaterial({
+                    color: 0xC89B2B,
+                    emissive: 0x3D2C05,
+                    emissiveIntensity: 0.25,
+                    metalness: 0.5,
+                    roughness: 0.3
+                });
+
+                // 1. الرأس والخوذة الاحترافية لكابتن مليار
+                const headGroup = new THREE.Group();
+                headGroup.position.set(0, 2.05, 0);
+
+                const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.68, 28, 28), suitMat);
+                headGroup.add(helmet);
+
+                // شريط ذهبي أعلى الخوذة
+                const helmetStripe = new THREE.Mesh(
+                    new THREE.TorusGeometry(0.66, 0.055, 12, 32, Math.PI),
+                    goldAccentMat
+                );
+                helmetStripe.rotation.y = Math.PI / 2;
+                headGroup.add(helmetStripe);
+
+                // واقي الوجه (Visor) المضيء
+                const visor = new THREE.Mesh(
+                    new THREE.SphereGeometry(0.62, 24, 16, -Math.PI * 0.35, Math.PI * 0.7, Math.PI * 0.28, Math.PI * 0.32),
+                    visorMat
+                );
+                visor.position.z = 0.12;
+                headGroup.add(visor);
+
+                courierGroup.add(headGroup);
+
+                // 2. الجذع (السترة الرسمية لشركة مليار)
+                const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.62, 0.52, 1.65, 24), suitMat);
+                torso.position.set(0, 0.65, 0);
+                courierGroup.add(torso);
+
+                // أحزمة الكتف الذهبية العاكسة
+                const strapLeft = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.66, 1.12), goldAccentMat);
+                strapLeft.position.set(-0.34, 0.65, 0);
+                courierGroup.add(strapLeft);
+
+                const strapRight = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.66, 1.12), goldAccentMat);
+                strapRight.position.set(0.34, 0.65, 0);
+                courierGroup.add(strapRight);
+
+                // حقيبة ظهر حرارية خلفية
+                const backpack = new THREE.Mesh(new THREE.BoxGeometry(1.15, 1.35, 0.65), suitMat);
+                backpack.position.set(0, 0.75, -0.68);
+                courierGroup.add(backpack);
+
+                const backpackTrim = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.12, 0.7), goldAccentMat);
+                backpackTrim.position.set(0, 1.15, -0.68);
+                courierGroup.add(backpackTrim);
+
+                // 3. الذراعان ممتدتان للأمام لحمل الطرد بإحكام
+                const leftArmGroup = new THREE.Group();
+                leftArmGroup.position.set(-0.78, 1.2, 0.05);
+                const leftUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.15, 0.95, 16), suitMat);
+                leftUpperArm.position.set(0.05, -0.25, 0.38);
+                leftUpperArm.rotation.x = Math.PI / 3;
+                leftUpperArm.rotation.z = -0.18;
+                leftArmGroup.add(leftUpperArm);
+
+                const leftGlove = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), goldAccentMat);
+                leftGlove.position.set(0.18, -0.48, 0.85);
+                leftArmGroup.add(leftGlove);
+                courierGroup.add(leftArmGroup);
+
+                const rightArmGroup = new THREE.Group();
+                rightArmGroup.position.set(0.78, 1.2, 0.05);
+                const rightUpperArm = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.15, 0.95, 16), suitMat);
+                rightUpperArm.position.set(-0.05, -0.25, 0.38);
+                rightUpperArm.rotation.x = Math.PI / 3;
+                rightUpperArm.rotation.z = 0.18;
+                rightArmGroup.add(rightUpperArm);
+
+                const rightGlove = new THREE.Mesh(new THREE.SphereGeometry(0.18, 16, 16), goldAccentMat);
+                rightGlove.position.set(-0.18, -0.48, 0.85);
+                rightArmGroup.add(rightGlove);
+                courierGroup.add(rightArmGroup);
+
+                // 4. الطرد الذهبي الفاخر المحمول بين يدي الشخصية
+                const parcelGroup = new THREE.Group();
+                parcelGroup.position.set(0, 0.65, 1.05);
+
+                const parcelBox = new THREE.Mesh(new THREE.BoxGeometry(1.18, 0.88, 0.92), parcelBoxMat);
+                parcelGroup.add(parcelBox);
+
+                // أشرطة تغليف الطرد المضيئة
+                const ribbonH = new THREE.Mesh(new THREE.BoxGeometry(1.22, 0.11, 0.96), visorMat);
+                parcelGroup.add(ribbonH);
+
+                const ribbonV = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.92, 0.96), visorMat);
+                parcelGroup.add(ribbonV);
+
+                // ختم أمان دائري على مقدمة الطرد
+                const seal = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 0.05, 20), goldAccentMat);
+                seal.rotation.x = Math.PI / 2;
+                seal.position.z = 0.47;
+                parcelGroup.add(seal);
+
+                courierGroup.add(parcelGroup);
+
+                // 5. الساقان وحلقة الطفو النفاثة أسفل الشخصية
+                const leftLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.17, 1.25, 16), suitMat);
+                leftLeg.position.set(-0.28, -0.75, 0.05);
+                leftLeg.rotation.x = -0.12;
+                courierGroup.add(leftLeg);
+
+                const rightLeg = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.17, 1.25, 16), suitMat);
+                rightLeg.position.set(0.28, -0.75, -0.05);
+                rightLeg.rotation.x = 0.14;
+                courierGroup.add(rightLeg);
+
+                // حلقة توازن ضوئية أسفل الشخصية أثناء الهبوط
+                const hoverRing = new THREE.Mesh(
+                    new THREE.TorusGeometry(0.85, 0.035, 12, 48),
+                    visorMat
+                );
+                hoverRing.rotation.x = Math.PI / 2;
+                hoverRing.position.set(0, -1.55, 0);
+                courierGroup.add(hoverRing);
+
+                // جسيمات ضوئية خفيفة تحيط بالشخصية والطرد
+                const sparkCount = 90;
+                const sparkPositions = new Float32Array(sparkCount * 3);
+                for (let i = 0; i < sparkCount * 3; i += 3) {
+                    sparkPositions[i] = (Math.random() - 0.5) * 6;
+                    sparkPositions[i + 1] = (Math.random() - 0.5) * 7;
+                    sparkPositions[i + 2] = (Math.random() - 0.5) * 5;
+                }
+                const sparkGeo = new THREE.BufferGeometry();
+                sparkGeo.setAttribute('position', new THREE.BufferAttribute(sparkPositions, 3));
+                const sparkMat = new THREE.PointsMaterial({
+                    size: 0.08,
+                    color: 0xF3E5AB,
+                    transparent: true,
+                    opacity: 0.7
+                });
+                const sparks = new THREE.Points(sparkGeo, sparkMat);
+                courierGroup.add(sparks);
+
+                // موضع البداية للشخصية على يسار الشاشة وبحجم متوازن لا يغطي النصوص
+                const isMobile = window.innerWidth < 768;
+                courierGroup.scale.set(isMobile ? 0.52 : 0.78, isMobile ? 0.52 : 0.78, isMobile ? 0.52 : 0.78);
+                courierGroup.position.set(isMobile ? -2.2 : -5.6, 2.2, 0);
+
+                // تتبع التمرير لتهبط الشخصية ببطء ونعومة مع نزول الزائر في الموقع
+                let targetY = 2.2;
+                let targetX = isMobile ? -2.2 : -5.6;
+                let targetRotY = 0.42;
+
+                window.addEventListener('scroll', () => {
+                    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                    const scrollRatio = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+
+                    // الشخصية تنزل ببطء من الأعلى إلى الأسفل مع التمرير وتتمايل بلطف
+                    targetY = 2.3 - scrollRatio * 4.4;
+                    const baseSideX = window.innerWidth < 768 ? -2.1 : -5.6;
+                    targetX = baseSideX + Math.sin(scrollRatio * Math.PI * 2) * 0.75;
+                    targetRotY = 0.42 + Math.sin(scrollRatio * Math.PI * 3) * 0.25;
+                }, { passive: true });
+
+                const clock = new THREE.Clock();
+
+                function animate() {
+                    requestAnimationFrame(animate);
+                    const t = clock.getElapsedTime();
+
+                    // حركة هبوط وطفو بطيئة وناعمة جداً (Lerp)
+                    const slowFloatOffset = Math.sin(t * 1.4) * 0.22;
+                    courierGroup.position.y += ((targetY + slowFloatOffset) - courierGroup.position.y) * 0.035;
+                    courierGroup.position.x += (targetX - courierGroup.position.x) * 0.035;
+                    courierGroup.rotation.y += (targetRotY - courierGroup.rotation.y) * 0.04;
+                    courierGroup.rotation.z = Math.sin(t * 1.1) * 0.04;
+
+                    // حركة حيوية للرأس والذراعين والطرد وحلقة الطفو
+                    headGroup.rotation.y = Math.sin(t * 0.9) * 0.14;
+                    headGroup.rotation.x = Math.sin(t * 1.2) * 0.06;
+
+                    parcelGroup.position.y = 0.65 + Math.sin(t * 2.2) * 0.04;
+                    parcelGroup.rotation.z = Math.sin(t * 1.8) * 0.03;
+
+                    hoverRing.rotation.z = t * 1.5;
+                    const pulseScale = 1 + Math.sin(t * 3) * 0.08;
+                    hoverRing.scale.set(pulseScale, pulseScale, 1);
+
+                    sparks.rotation.y = t * 0.25;
+
+                    renderer.render(scene, camera);
+                }
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                    const mobile = window.innerWidth < 768;
+                    courierGroup.scale.set(mobile ? 0.52 : 0.78, mobile ? 0.52 : 0.78, mobile ? 0.52 : 0.78);
+                });
+
+                animate();
+            } catch (e) {
+                console.error('3D Character init error:', e);
+            }
+        }
+
+
+
+        
+        /**
+         * أشكال ثلاثية الأبعاد (3D Geometric Shapes) في الخلفية:
+         * مجسمات ذهبية، حلقات سماوية، وثماني أوجه تتحرك بانسيابية وتستجيب للتمرير
+         */
+        function init3DBackgroundShapes() {
+            const container = document.getElementById('three-bg-shapes-canvas');
+            if (!container || typeof THREE === 'undefined') return;
+
+            try {
+                const scene = new THREE.Scene();
+                const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 150);
+                camera.position.set(0, 0, 22);
+
+                const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                container.appendChild(renderer.domElement);
+
+                const ambient = new THREE.AmbientLight(0xffffff, 0.55);
+                scene.add(ambient);
+
+                const goldLight = new THREE.PointLight(0xF3E5AB, 2.4, 70);
+                goldLight.position.set(10, 10, 15);
+                scene.add(goldLight);
+
+                const cyanLight = new THREE.PointLight(0x00E5FF, 2.0, 70);
+                cyanLight.position.set(-12, -6, 12);
+                scene.add(cyanLight);
+
+                const goldMat = new THREE.MeshStandardMaterial({
+                    color: 0xD4AF37,
+                    metalness: 0.85,
+                    roughness: 0.22,
+                    transparent: true,
+                    opacity: 0.55
+                });
+
+                const cyanWireMat = new THREE.MeshStandardMaterial({
+                    color: 0x00E5FF,
+                    emissive: 0x006688,
+                    emissiveIntensity: 0.4,
+                    metalness: 0.7,
+                    roughness: 0.25,
+                    wireframe: true,
+                    transparent: true,
+                    opacity: 0.32
+                });
+
+                const shapes = [];
+
+                // 1. مجسم ثماني الأوجه ذهبي أعلى اليمين
+                const octa = new THREE.Mesh(new THREE.OctahedronGeometry(2.1, 0), goldMat);
+                octa.position.set(8.5, 4.5, -3);
+                scene.add(octa);
+                shapes.push({ mesh: octa, rotX: 0.004, rotY: 0.006, baseY: 4.5, phase: 0 });
+
+                // 2. حلقة طوق سماوية شبكية منتصف اليسار
+                const torus1 = new THREE.Mesh(new THREE.TorusGeometry(2.8, 0.22, 16, 60), cyanWireMat);
+                torus1.position.set(-8.5, 1.5, -4);
+                scene.add(torus1);
+                shapes.push({ mesh: torus1, rotX: 0.005, rotY: 0.003, baseY: 1.5, phase: 1.4 });
+
+                // 3. مجسم ذو عشرين وجهاً ذهبي أسفل اليمين
+                const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(1.9, 0), goldMat);
+                ico.position.set(7.5, -4.5, -2);
+                scene.add(ico);
+                shapes.push({ mesh: ico, rotX: -0.004, rotY: 0.005, baseY: -4.5, phase: 2.6 });
+
+                // 4. مكعب مفرغ شبكي أسفل اليسار
+                const boxWire = new THREE.Mesh(new THREE.BoxGeometry(3.2, 3.2, 3.2), cyanWireMat);
+                boxWire.position.set(-7.5, -5.0, -3);
+                scene.add(boxWire);
+                shapes.push({ mesh: boxWire, rotX: 0.003, rotY: -0.004, baseY: -5.0, phase: 3.8 });
+
+                // 5. حلقة ذهبية صغيرة عائمة في العمق
+                const ringGold = new THREE.Mesh(new THREE.TorusGeometry(1.4, 0.14, 14, 48), goldMat);
+                ringGold.position.set(0, 6.2, -7);
+                scene.add(ringGold);
+                shapes.push({ mesh: ringGold, rotX: 0.006, rotY: 0.004, baseY: 6.2, phase: 5.0 });
+
+                let scrollProgress = 0;
+                window.addEventListener('scroll', () => {
+                    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+                    scrollProgress = Math.min(1, Math.max(0, window.scrollY / maxScroll));
+                }, { passive: true });
+
+                const clock = new THREE.Clock();
+                function animateShapes() {
+                    requestAnimationFrame(animateShapes);
+                    const t = clock.getElapsedTime();
+
+                    shapes.forEach((item, idx) => {
+                        item.mesh.rotation.x += item.rotX;
+                        item.mesh.rotation.y += item.rotY;
+                        const dir = idx % 2 === 0 ? -1 : 1;
+                        item.mesh.position.y = item.baseY + Math.sin(t * 0.9 + item.phase) * 0.45 + (scrollProgress * 4.5 * dir);
+                    });
+
+                    renderer.render(scene, camera);
+                }
+
+                window.addEventListener('resize', () => {
+                    camera.aspect = window.innerWidth / window.innerHeight;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(window.innerWidth, window.innerHeight);
+                });
+
+                animateShapes();
+            } catch (err) {
+                console.error('3D Background shapes error:', err);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            init3DBackgroundShapes();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            if (mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
+
+            // Scroll Progress Line, Navbar Compactness & Smooth Parallax Photo Drift
+            const navbar = document.getElementById('navbar');
+            const progressBar = document.getElementById('scroll-progress-bar');
+            const parallaxPhotos = document.querySelectorAll('.parallax-photo');
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                if (docHeight > 0 && progressBar) {
+                    const pct = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+                    progressBar.style.width = pct + '%';
+                }
+
+                if (scrollY > 40) {
+                    navbar.classList.add('py-2');
+                    navbar.classList.remove('py-4');
+                } else {
+                    navbar.classList.add('py-4');
+                    navbar.classList.remove('py-2');
+                }
+
+                // تحريك الصور بلطف أثناء النزول لتبدو حية وغير ثابتة
+                parallaxPhotos.forEach(photo => {
+                    if (photo.classList.contains('is-visible')) {
+                        const rect = photo.getBoundingClientRect();
+                        const speed = parseFloat(photo.getAttribute('data-parallax-speed') || '0.06');
+                        const offset = (rect.top - window.innerHeight * 0.4) * speed;
+                        photo.style.transform = `translateY(${offset.toFixed(1)}px) scale(1)`;
+                    }
+                });
+            }, { passive: true });
+
+            // Scroll Reveal للنصوص والبطاقات
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -40px 0px'
+            });
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // تأثير سقوط وظهور الصور ببطء ونعومة عند النزول
+            const photoDropElements = document.querySelectorAll('.photo-drop-reveal');
+            const photoObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            photoDropElements.forEach(el => photoObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
